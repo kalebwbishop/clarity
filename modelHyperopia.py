@@ -250,8 +250,8 @@ if __name__ == "__main__":
     # Initialize model, loss function, and optimizer
     model = HyperopiaModel().to(device)
     criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=10, factor=0.1)
     
     # Train the model
-    train_model(model, train_loader, val_loader, criterion, optimizer, scheduler, num_epochs=10000, device=device)
+    train_model(model, train_loader, val_loader, criterion, optimizer, scheduler, num_epochs=100, device=device)
